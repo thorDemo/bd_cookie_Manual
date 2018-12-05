@@ -762,4 +762,4 @@ class PushTool:
         ]
         return choice(ua)
 
-# print(PushTool.get_cookies())
+# print(type(PushTool.get_cookies()))

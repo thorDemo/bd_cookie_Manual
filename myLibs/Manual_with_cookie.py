@@ -10,7 +10,7 @@ import traceback
 success_count = 0
 failure_count = 0
 start_time = datetime.now()
-cookie = PushTool.get_cookies()
+# cookie = PushTool.get_cookies()
 config = ConfigParser()
 config.read('config.ini', 'utf-8')
 target = config.get('bd_push', 'target')
@@ -35,7 +35,6 @@ class BDManual:
                 'Connection': 'keep-alive',
                 'Content-Length': str(len(data)),
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                'Cookie': 'BIDUPSID=358AB784CA9B61AE0BB262CA5B63C31F; PSTM=1543830159; BAIDUID=10F2B0EDBCCA246B1096F100C2D54A10:FG=1; H_PS_PSSID=1433_21118_26350_27508; Hm_lvt_6f6d5bc386878a651cb8c9e1b4a3379a=1543888479; lastIdentity=PassUserIdentity; SIGNIN_UC=70a2711cf1d3d9b1a82d2f87d633bd8a02939879255; delPer=0; PSINO=7; locale=zh; __cas__rn__=293987925; BDUSS=nU1fmdmVU92SThBRU8tNDQ0T3RxcFd3Zjhoa2g1cVdwZGZXYUxNeTZycHcyQzVjQVFBQUFBJCQAAAAAAAAAAAEAAABmnim80rvJ-tK7ysDWwtS2NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBLB1xwSwdcQ; SITEMAPSESSID=iope24msj5s1rfcu9qlpmdv5l4; Hm_lpvt_6f6d5bc386878a651cb8c9e1b4a3379a=1543981941',
                 'Host': 'ziyuan.baidu.com',
                 'Origin': 'https://ziyuan.baidu.com',
                 'Referer': 'https://ziyuan.baidu.com/linksubmit/url',
@@ -47,6 +46,24 @@ class BDManual:
             conn.headers = headers
             # print(headers)
             # 将cookiesJar赋值给会话
+            cookie = {
+                'BIDUPSID': '358AB784CA9B61AE0BB262CA5B63C31F',
+                'PSTM': '1543830159',
+                'BAIDUID': '10F2B0EDBCCA246B1096F100C2D54A10:FG=1',
+                'H_PS_PSSID': '1433_21118_26350_27508',
+                'Hm_lvt_6f6d5bc386878a651cb8c9e1b4a3379a': '1543888479',
+                'lastIdentity': 'PassUserIdentity',
+                'SIGNIN_UC': '70a2711cf1d3d9b1a82d2f87d633bd8a02939879255',
+                'delPer': '0',
+                'PSINO': '7',
+                'locale': 'zh',
+                '__cas__rn__': '293987925',
+                'BDUSS': 'nU1fmdmVU92SThBRU8tNDQ0T3RxcFd3Zjhoa2g1cVdwZGZXYUxNeTZycHcyQzVjQVFBQUFBJCQAAAAAAAAAAAEAAABmn'
+                         'im80rvJ-tK7ysDWwtS2NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBL'
+                         'B1xwSwdcQ',
+                'SITEMAPSESSID': 'iope24msj5s1rfcu9qlpmdv5l4',
+                'Hm_lpvt_6f6d5bc386878a651cb8c9e1b4a3379a':'1543981941',
+            }
             cookiesJar = requests.utils.cookiejar_from_dict(cookie, cookiejar=None, overwrite=True)
             conn.cookies = cookiesJar
             code = 404
